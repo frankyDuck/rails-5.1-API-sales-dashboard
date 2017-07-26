@@ -1,9 +1,9 @@
 class Api::V1::CompaniesController < ApplicationController
   
-	def index
+  def index
     @companies = Company.all
     render json: @companies, status: 200
-	end	
+  end	
 
 
 
@@ -11,7 +11,7 @@ class Api::V1::CompaniesController < ApplicationController
 
  def company_params
    params.require(:company).permit(:name, :start_week, :end_week, :city, :state, :country_code, :time_zone)
- end	
- 
+ end
+
 end
 
