@@ -1,5 +1,16 @@
 class Api::V1::SalesController < ApplicationController
 
+  def index
+    @company = Company.find_by(id: params[:company_id])
+    if @company
+      @sales = Sale.find_by(company_id: @company.id)
+      render json: @sales 
+    else  
+      render status: 404
+    end  
+    
+  end
+
   private
 
   def sale_params
