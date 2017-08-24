@@ -44,7 +44,7 @@
     when 0
       1.upto(t_array[0]) do |q|   
         Company.create(
-          :name => "Company" + "_#{q}"+"NY",
+          :name => "Company" + "_#{q}_"+"NY",
           :start_week => 7,
           :end_week => 6,
           :city => "NYC",
@@ -56,7 +56,7 @@
     when 1
       1.upto(t_array[1]) do |q|
         Company.create(
-          :name => "Company" + "_#{q}"+"MA",
+          :name => "Company" + "_#{q}_"+"MA",
           :start_week => 7,
           :end_week => 6,
           :city => "Boston",
@@ -68,7 +68,7 @@
     when 2
       1.upto(t_array[2]) do |q|
         Company.create(
-          :name => "Company" + "_#{q}"+"CA",
+          :name => "Company" + "_#{q}_"+"CA",
           :start_week => 7,
           :end_week => 6,
           :city => "San francisco",
