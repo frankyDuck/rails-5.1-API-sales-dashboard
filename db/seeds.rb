@@ -7,33 +7,136 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+# case RAILS_ENV
+#   when "development" || "test"
+#   6.times do
+#     Company.create(
+#       :name => Faker::Company.name,
+#       :start_week => 7,
+#       :end_week => 6,
+#       :city => Faker::Address.city,
+#       :state => Faker::Address.state,
+#       :country_code => Faker::Address.country_code,
+#       :time_zone => Faker::Address.time_zone
+#     )  
+#   end
 
-6.times do
-  Company.create(
-	:name => Faker::Company.name,
-    :start_week => 7,
-    :end_week => 6,
-    :city => Faker::Address.city,
-    :state => Faker::Address.state,
-    :country_code => Faker::Address.country_code,
-    :time_zone => Faker::Address.time_zone
-  )  
-end
 
+#   52.times do
+#     Sale.create(
+#       :company_id => 1,
+#       :day1 => Faker::Number.number(6),
+#       :day2 => Faker::Number.number(6),
+#       :day3 => Faker::Number.number(6),
+#       :day4 => Faker::Number.number(6),
+#       :day5 => Faker::Number.number(6),
+#       :day6 => Faker::Number.number(6),
+#       :day7 => Faker::Number.number(6),
+#       :year => 2014
+#     ) 
+#   end
+# when "production"
+#end
+  t_array=[10, 10, 10]
+  t_array.each_index do |i|
 
-52.times do
-  Sale.create(
-    :company_id => 1,
-  	:day1 => Faker::Number.number(6),
-  	:day2 => Faker::Number.number(6),
-  	:day3 => Faker::Number.number(6),
-  	:day4 => Faker::Number.number(6),
-  	:day5 => Faker::Number.number(6),
-  	:day6 => Faker::Number.number(6),
-  	:day7 => Faker::Number.number(6),
-  	:year => 2014
-  )	
-end	
+    case i
+    when 0
+      1.upto(t_array[0]) do |q|   
+        Company.create(
+          :name => "Company" + "_#{q}"+"NY",
+          :start_week => 7,
+          :end_week => 6,
+          :city => "NYC",
+          :state => "NY",
+          :country_code => "US",
+          :time_zone => "EST"
+        )
+      end
+    when 1
+      1.upto(t_array[1]) do |q|
+        Company.create(
+          :name => "Company" + "_#{q}"+"MA",
+          :start_week => 7,
+          :end_week => 6,
+          :city => "Boston",
+          :state => "MA",
+          :country_code => "US",
+          :time_zone => "EST"
+        )
+      end
+    when 2
+      1.upto(t_array[2]) do |q|
+        Company.create(
+          :name => "Company" + "_#{q}"+"CA",
+          :start_week => 7,
+          :end_week => 6,
+          :city => "San francisco",
+          :state => "CA",
+          :country_code => "US",
+          :time_zone => "PDT"
+        )
+      end    
+    end
+  end  
+  companies_ma = Company.where(state: "MA")
+  companies_ny = Company.where(state: "NY")
+  companies_ca = Company.where(state: "CA")
+  companies = [companies_ma, companies_ny, companies_ca]
+  companies.each do |i|
+    case i
+    when companies_ma
+      companies_ma.each do |c| 
+        52.times do
+          Sale.create(
+            :company_id => c.id,
+            :day1 => rand(350000..500000) + rand(1234..1799),
+            :day2 => rand(350000..500000) + rand(1234..1799),
+            :day3 => rand(350000..500000) + rand(1234..1799),
+            :day4 => rand(350000..500000) - rand(1234..1799),
+            :day5 => rand(350000..500000) + rand(1234..1799),
+            :day6 => rand(350000..500000) + rand(1234..1799),
+            :day7 => rand(350000..500000) + rand(3234..4799),
+            :year => 2014
+          )
+        end
+      end
+    when companies_ny
+      companies_ny.each do |c| 
+        52.times do
+          Sale.create(
+            :company_id => c.id,
+            :day1 => rand(350000..500000) + rand(2234..2799),
+            :day2 => rand(350000..500000) + rand(2234..2799),
+            :day3 => rand(350000..500000) + rand(3564..3799),
+            :day4 => rand(350000..500000) - rand(2234..3799),
+            :day5 => rand(350000..500000) + rand(2234..2799),
+            :day6 => rand(350000..500000) + rand(2234..2799),
+            :day7 => rand(350000..500000) + rand(5234..7799),
+            :year => 2014
+          ) 
+        end
+      end
+    when companies_ca
+      companies_ca.each do |c| 
+        52.times do
+          Sale.create(
+            :company_id => c.id,
+            :day1 => rand(550000..600000) + rand(2234..2799),
+            :day2 => rand(550000..600000) + rand(2234..2799),
+            :day3 => rand(550000..600000) + rand(3564..3799),
+            :day4 => rand(550000..600000) - rand(2234..3799),
+            :day5 => rand(550000..600000) + rand(2234..2799),
+            :day6 => rand(550000..600000) + rand(2234..2799),
+            :day7 => rand(550000..600000) + rand(5234..7799),
+            :year => 2014
+          )
+        end   
+      end  
+    end  
+  end
+ 
+
   
       
       
