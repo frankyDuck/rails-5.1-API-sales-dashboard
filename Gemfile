@@ -34,7 +34,7 @@ end
 
 group :test do
   gem 'database_cleaner'
-end	
+end 
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'

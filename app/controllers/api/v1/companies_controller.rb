@@ -6,7 +6,7 @@ class Api::V1::CompaniesController < ApplicationController
   end
 
   def show
-    @company =Company.find_by(id:params[:id])
+    @company = Company.find(params[:id])
     @company ? (render json: @company) : (render status: 404)
   end  
 
