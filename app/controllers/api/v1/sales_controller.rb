@@ -3,7 +3,7 @@ class Api::V1::SalesController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     if @company
-      @sales = Sale.where(company_id: @company.id)
+      @sales = Sale.where(company_id: @company.id).order(:sales_date)
       render json: @sales 
     else  
       render status: 404
