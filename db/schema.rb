@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907173227) do
+ActiveRecord::Schema.define(version: 20170718162636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,17 +29,13 @@ ActiveRecord::Schema.define(version: 20170907173227) do
 
   create_table "sales", force: :cascade do |t|
     t.integer "company_id"
-    t.float "day1"
-    t.float "day2"
-    t.float "day3"
-    t.float "day4"
-    t.float "day5"
-    t.float "day6"
-    t.float "day7"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float "sales_on_date"
     t.integer "year"
     t.float "avg_week_sales"
+    t.date "sales_date"
+    t.integer "week_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

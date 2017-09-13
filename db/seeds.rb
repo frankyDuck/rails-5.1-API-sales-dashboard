@@ -84,52 +84,59 @@
   companies_ca = Company.where(state: "CA")
   companies = [companies_ma, companies_ny, companies_ca]
   companies.each do |i|
+    set_date = Date.today - 1460
     case i
     when companies_ma
       companies_ma.each do |c| 
-        52.times do
+        7*52.times do |t|
           Sale.create(
             :company_id => c.id,
-            :day1 => rand(350000..500000) + rand(1234..1799),
-            :day2 => rand(350000..500000) + rand(1234..1799),
-            :day3 => rand(350000..500000) + rand(1234..1799),
-            :day4 => rand(350000..500000) - rand(1234..1799),
-            :day5 => rand(350000..500000) + rand(1234..1799),
-            :day6 => rand(350000..500000) + rand(1234..1799),
-            :day7 => rand(350000..500000) + rand(3234..4799),
-            :year => 2014
+            :sales_on_date => rand(350000..500000) + rand(1234..1799),
+            :sales_date => set_date + t,
+            # :day2 => rand(350000..500000) + rand(1234..1799),
+            # :day3 => rand(350000..500000) + rand(1234..1799),
+            # :day4 => rand(350000..500000) - rand(1234..1799),
+            # :day5 => rand(350000..500000) + rand(1234..1799),
+            # :day6 => rand(350000..500000) + rand(1234..1799),
+            # :day7 => rand(350000..500000) + rand(3234..4799),
+            :week_number => (set_date+t).strftime('%GU%V%u')[5..6],
+            :year => 2013
           )
         end
       end
     when companies_ny
       companies_ny.each do |c| 
-        52.times do
+        7*52.times do |t|
           Sale.create(
             :company_id => c.id,
-            :day1 => rand(350000..500000) + rand(2234..2799),
-            :day2 => rand(350000..500000) + rand(2234..2799),
-            :day3 => rand(350000..500000) + rand(3564..3799),
-            :day4 => rand(350000..500000) - rand(2234..3799),
-            :day5 => rand(350000..500000) + rand(2234..2799),
-            :day6 => rand(350000..500000) + rand(2234..2799),
-            :day7 => rand(350000..500000) + rand(5234..7799),
-            :year => 2014
+            :sales_on_date => rand(350000..500000) + rand(2234..2799),
+            :sales_date => set_date + t,
+            # :day2 => rand(350000..500000) + rand(2234..2799),
+            # :day3 => rand(350000..500000) + rand(3564..3799),
+            # :day4 => rand(350000..500000) - rand(2234..3799),
+            # :day5 => rand(350000..500000) + rand(2234..2799),
+            # :day6 => rand(350000..500000) + rand(2234..2799),
+            # :day7 => rand(350000..500000) + rand(5234..7799),
+            :week_number => (set_date+t).strftime('%GU%V%u')[5..6],
+            :year => 2013
           ) 
         end
       end
     when companies_ca
       companies_ca.each do |c| 
-        52.times do
+        7*52.times do |t|
           Sale.create(
             :company_id => c.id,
-            :day1 => rand(550000..600000) + rand(2234..2799),
-            :day2 => rand(550000..600000) + rand(2234..2799),
-            :day3 => rand(550000..600000) + rand(3564..3799),
-            :day4 => rand(550000..600000) - rand(2234..3799),
-            :day5 => rand(550000..600000) + rand(2234..2799),
-            :day6 => rand(550000..600000) + rand(2234..2799),
-            :day7 => rand(550000..600000) + rand(5234..7799),
-            :year => 2014
+            :sales_on_date => rand(550000..600000) + rand(2234..2799),
+            :sales_date => set_date + t,
+            # :day2 => rand(550000..600000) + rand(2234..2799),
+            # :day3 => rand(550000..600000) + rand(3564..3799),
+            # :day4 => rand(550000..600000) - rand(2234..3799),
+            # :day5 => rand(550000..600000) + rand(2234..2799),
+            # :day6 => rand(550000..600000) + rand(2234..2799),
+            # :day7 => rand(550000..600000) + rand(5234..7799),
+            :week_number => (set_date+t).strftime('%GU%V%u')[5..6],
+            :year => 2013
           )
         end   
       end  

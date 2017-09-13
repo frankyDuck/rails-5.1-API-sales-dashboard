@@ -2,14 +2,11 @@ class CreateSales < ActiveRecord::Migration[5.1]
   def change
     create_table :sales do |t|
       t.integer :company_id
-      t.float :day1
-      t.float :day2
-      t.float :day3
-      t.float :day4
-      t.float :day5
-      t.float :day6
-      t.float :day7
-
+      t.float :sales_on_date
+      t.integer :year
+      t.float :avg_week_sales
+      t.date :sales_date
+      t.integer :week_number
       t.timestamps
     end
   end
