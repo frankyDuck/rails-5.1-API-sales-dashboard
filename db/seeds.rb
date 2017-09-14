@@ -37,10 +37,11 @@
 #   end
 # when "production"
 #end
+  Sale.skip_callback(:save, :before, :calc_avg_week_sales)
   t_array=[10, 10, 10]
   t_array.each_index do |i|
 
-    case i
+  case i
     when 0
       1.upto(t_array[0]) do |q|   
         Company.create(
@@ -88,7 +89,7 @@
     case i
     when companies_ma
       companies_ma.each do |c| 
-        7*52.times do |t|
+        364.times do |t|
           Sale.create(
             :company_id => c.id,
             :sales_on_date => rand(350000..500000) + rand(1234..1799),
@@ -106,7 +107,7 @@
       end
     when companies_ny
       companies_ny.each do |c| 
-        7*52.times do |t|
+        364.times do |t|
           Sale.create(
             :company_id => c.id,
             :sales_on_date => rand(350000..500000) + rand(2234..2799),
@@ -124,7 +125,7 @@
       end
     when companies_ca
       companies_ca.each do |c| 
-        7*52.times do |t|
+        364.times do |t|
           Sale.create(
             :company_id => c.id,
             :sales_on_date => rand(550000..600000) + rand(2234..2799),
@@ -142,6 +143,15 @@
       end  
     end  
   end
+
+  companies = Company.all
+  companies.each do |c|
+    current_company = Company.find(c.id)
+      current_company.sales.select("week_number").group("week_number").count(:week_number).each do |key,value|
+        avg_of_sales = (current_company.sales.where(week_number: key).sum(:sales_on_date)/value.to_f).round(3)
+        current_company.sales.where(week_number: key).update_all(avg_week_sales: avg_of_sales)
+      end
+  end  
  
 
   
