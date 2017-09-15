@@ -10,10 +10,6 @@ class Api::V1::SalesController < ApplicationController
     end  
   end
 
-  def new
-    @sale = Sale.new
-  end  
-
   def create
     @sale = Sale.new(sale_params)
     if @sale.save
