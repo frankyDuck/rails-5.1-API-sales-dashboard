@@ -12,5 +12,5 @@ postgres:
   username: postgres
 
 before_script:
-  - "psql -c 'create database myapp_test;' -U postgres"
+  - "psql -c 'create database sales_app_test;' -U postgres"
   - "rake db:migrate"  
