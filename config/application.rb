@@ -20,7 +20,7 @@ module SalesApp
   class Application < Rails::Application
     # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
-
+    
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
@@ -34,12 +34,12 @@ module SalesApp
     config.api_only = true
     
     #Allow GET, POST or OPTIONS requests from any origin on any resource.
-    # config.middleware.insert_before 0, Rack::Cors do
-    #   allow do
-    #     origins '*'
-    #     resource '*', :headers => :any, :methods => [:get, :post, :options]
-    #   end
-    # end
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
 
   end
 end
