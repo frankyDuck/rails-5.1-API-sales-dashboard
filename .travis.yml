@@ -6,7 +6,7 @@ env:
 
 services:
   - postgresql
-  
+
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
@@ -14,7 +14,7 @@ script:
 
 before_script:
   - psql -c 'create database sales_app_test;' -U postgres
-  - rake db:migrate
+  - bundle exec rake db:migrate
 
 test:
   adapter: postgresql
