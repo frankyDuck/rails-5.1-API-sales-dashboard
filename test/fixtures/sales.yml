@@ -3,11 +3,5 @@
 <% 52.times do |n| %>
 sale_<%= n %>:
   company_id: 337561370
-  day1: <%= Faker::Number.number(6) %>
-  day2: <%= Faker::Number.number(6) %>
-  day3: <%= Faker::Number.number(6) %>
-  day4: <%= Faker::Number.number(6) %>
-  day5: <%= Faker::Number.number(6) %>
-  day6: <%= Faker::Number.number(6) %>
-  day7: <%= Faker::Number.number(6) %>
+  sales_on_date: <%= Faker::Number.number(6) %>
 <% end %>

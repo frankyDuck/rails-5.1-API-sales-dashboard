@@ -4,11 +4,6 @@ class Sale < ApplicationRecord
   #before_save :calc_avg_week_sales
   validates_presence_of :sales_on_date, :company_id
 
-  #when creating a sale record, before save take the week_number from the date.
-
-
-
-  
   protected
     # def calc_avg_week_sales
     #   #check if value.nil? || key.nil? raise an error message
